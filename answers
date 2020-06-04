@@ -1,0 +1,55 @@
+https://blog.csdn.net/Wanderers__/article/details/106388621
+
+https://blog.csdn.net/csdnky/article/details/106299001
+
+1、 Activiti工作流中，如果要实现根据工作负荷来安排任务，有什么思路？
+答：可以基于负载平衡和经验值来合理安排任务。
+	解析流程定义文件，取出文件中定义的所有节点，在父节点上进行判断，根据子节点的数量，对工作复合进行区分。
+http://www.docin.com/p-252909523.html
+
+2、 采用SprigngCloud之后，代码开发，日志，异常链，管理，排除故障等方面应有什么调整？
+答：代码开发：耦合度比较低。不会影响其他模块的开发。减轻团队的成本，可以并行开发，配置比较简单，基本用注解就能实现；
+日志：借助ELK+Kafka进行分布式的日志收集；
+异常链：使用Hystrix组件进行熔断或服务降级；
+管理：Eureka可以实现服务注册与发现，Zuul实现服务的路由和服务过虑等工作；
+排除故障：借助分布式日志收集工具，确定服务端的位置进行调整
+
+3、 实体类为未来参与排序等集合的操作操作，一般要重新哪些方法？有哪些注意点？
+需要排序的对象需要实现comparable接口，然后重写compareTo方法，但是方法会增加耦合度，在项目中不同位置使用的时候要根据不同需求反复修改排序规则。更好的方法可以通过匿名类，new一个Comparator类，然后实现compare方法
+
+4、 Java Serializable 的作用, Equals ，== 的区别？
+Serializable的作用
+①对于远程调用，能方便对对象进行编码和解码，就像实现对象直接传输。
+②可以将对象持久化到介质中，就像实现对象直接存储。
+③允许对象自定义外部存储的格式。
+Equals，==的区别
+== 对于基本类型来说是值比较，对于引用类型来说是比较的是引用；而 equals 默认情况下是引用比较，只是很多类重新了 equals 方法，比如 String、Integer 等把它变成了值比较，所以一般情况下 equals 比较的是值是否相等。
+
+5、 是否有自己的Git地址
+有，通常见到好的开源项目会收藏到自己的github，以便自己后期学习。
+
+6、 前后端分离开发，日志应该如何进行记录，在出现问题的时候，方便定位问题？
+之前项目开发中使用日志记录API是log4j，设置参数为log4j.rootLogger=INFO,CONSOLE,FILE
+log4j.addivity.org.apache=true
+分为控制台和文件两个部分，客户端可以在浏览器上发现出现问题的url，然后到后台对方法进行debug调试对比参数等问题
+
+7、 数据库访问的时候，在一个项目中是否可以同时使用Mybatis，JPA，JDBC等多种持久化技术？如可以，事务如何处理？
+可以，通过注解。
+https://blog.csdn.net/Liu_York/article/details/88765065?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-3.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-3.nonecase
+
+
+9、算法设计题目
+给出正整数n，则1到n这n个数可以构成n！种排列，把这些排列按照从小到大的顺序（字典顺序）列出，如n=3时，列出1 2 3，1 3 2，2 1 3，2 3 1，3 1 2，3 2 1六个排列。
+https://blog.csdn.net/libin56842/article/details/17048019?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase
+
+http://www.myexception.cn/j2se/174747.html
+
+10、修复bug
+https://gitee.com/stevenworkshop_admin/dingdingprivateword.git
+该项目是springboot集成jpa。在启动的时候，springboot出现异常，无法启动。
+请结合springboot的启动原理进行分析，排除故障，在数据库中自动生成表，并解释故障原因。
+
+并在代码中将以下字符串转解析为类，并对该类覆盖
+a) 复写equals,Hashcode,Comparaor,toString方法
+
+https://blog.csdn.net/javahuangfang/article/details/7746618
